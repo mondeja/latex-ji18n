@@ -36,7 +36,7 @@ DOC_EXTRAS = [
     'sphinx-rtd-theme==0.4.3',
     'sphinx-argparse>=0.2.5',
 ]
-DEV_EXTRAS = ['twine', 'bump2version', 'pre-commit'] + \
+DEV_EXTRAS = ['twine', 'bump2version', 'pre-commit', 'black'] + \
     TEST_EXTRAS + \
     DOC_EXTRAS
 
@@ -136,9 +136,8 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Internationalization',
-        'Topic :: Software Development :: Localization',
         'Topic :: Text Processing',
-        'Topic :: Text Processing :: Markup :: Markdown',
+        'Topic :: Text Processing :: Markup :: LaTeX',
     ],
     cmdclass={
         'upload': UploadCommand,
