@@ -19,6 +19,7 @@ REQUIRED = [
     'jinja2>=2.11.2',
     'inflection>=0.5.1',
     'ruamel.yaml>=0.16.10',
+    'click>=7.1.2',
 ]
 
 TEST_EXTRAS = [
@@ -111,7 +112,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            '%s = %s.__main__:run' % (PROJECT_NAME, PACKAGE_NAME),
+            '%s = %s.__main__:cli' % (PROJECT_NAME, PACKAGE_NAME),
         ],
     },
     packages=find_packages(exclude=['test']),

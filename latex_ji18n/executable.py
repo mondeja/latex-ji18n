@@ -7,19 +7,19 @@ import sys
 from latex_ji18n.exceptions import LatexBuildError
 
 
-class LatexBuilder(object):
-    """Base class for Latex builders."""
+class LatexExecutable(object):
+    """Base class for Latex executables."""
 
     def __init__(self):
-        self.binary = shutil.which(self.binary_name)
+        self.binary = shutil.which(self.name)
 
     @property
     @abc.abstractmethod
-    def binary_name(self):
+    def name(self):
         pass
 
     @abc.abstractmethod
-    def build(self):
+    def run(self):
         """Generates a PDF from LaTeX a source. If there are errors generating
         a :py:class:`latex_ji18n.exceptions.LatexError`` is raised.
         """
@@ -58,10 +58,11 @@ class LatexBuilder(object):
         return proc.returncode
 
 
-class PdfLatexBuilder(LatexBuilder):
-    binary_name = "pdflatex"
+class PdfLatexExecutable(LatexExecutable):
+    name = "pdflatex"
+    output_extension = ".pdf"
 
-    def build(self, filepath, n_runs=2):
+    def run(self, filepath, n_runs=2):
         for i in range(n_runs):
             for line in self.live_stdout_call([self.binary, filepath]):
                 sys.stdout.write("%s\n" % line)

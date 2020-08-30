@@ -142,8 +142,7 @@ class ProjectContext(BaseContext):
             source_dirpath,
             "source_dirpath",
             must_exists=True,
-            not_exists_msg=("Source directory '%s' does not exists.")
-            % source_dirpath,
+            not_exists_msg=("Source directory '%s' does not exists.") % source_dirpath,
         )
 
         # src/main.template.tex
@@ -154,8 +153,7 @@ class ProjectContext(BaseContext):
             template_filepath,
             "template_filepath",
             must_exists=True,
-            not_exists_msg=("Template file '%s' does not exists.")
-            % template_filepath,
+            not_exists_msg=("Template file '%s' does not exists.") % template_filepath,
         )
 
         # dist/
@@ -242,9 +240,15 @@ class LanguageContext(BaseContext):
         self._set_meta("language", language)
 
     @property
-    def localized_template_name(self):
+    def localized_tex_filename(self):
         schema = self.project_context._config.localized_template_name_schema()
         return schema % self._get_meta("language")
+
+    @property
+    def localized_tex_filepath(self):
+        return os.path.join(
+            self.project_context.source_dirpath, self.localized_template_name
+        )
 
     @property
     def filepath(self):

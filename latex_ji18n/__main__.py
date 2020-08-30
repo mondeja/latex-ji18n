@@ -1,35 +1,28 @@
 #!/usr/bin/env python
 
-import argparse
-import sys
+import os
 
-import latex_ji18n
-
-
-def build_parser():
-    parser = argparse.ArgumentParser(description=latex_ji18n.__description__)
-    parser.add_argument(
-        "-v",
-        "--version",
-        action="version",
-        version="%(prog)s " + latex_ji18n.__version__,
-        help="Show program version number and exit.",
-    )
-    return parser
+import click
 
 
-def parse_options(args):
-    parser = build_parser()
-    return parser.parse_args(args)
+@click.group()
+def cli():
+    pass
 
 
-def run(args=[]):
-    parse_options(args)
-
-    latex_ji18n.render()
-
-    return 0
+@click.argument(
+    "project_path",
+    envvar="LATEX_JI18N_PROJECT_PATH",
+    type=click.Path(exists=True),
+    nargs=-1,
+)
+@cli.command()
+def build(project_path):
+    from latex_ji18n.commands.build import run
+    if not project_path:
+        project_path = os.getcwd()
+    run(project_path=os.path.abspath(project_path))
 
 
 if __name__ == "__main__":
-    sys.exit(run(args=sys.argv[1:]))
+    cli()
