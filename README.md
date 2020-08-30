@@ -73,14 +73,14 @@ The process is simple, you write your replacements in `src/template.tex`
 The contexts are created updating a dictionary iterating over files in next
  order:
 
-- config/data.yml
-- config/layout.yml
-- config/style.yml
-- config/_private/data.yml
-- config/_private/layout.yml
-- config/_private/style.yml
-- _i18n/{language}.yml
-- _i18n/_private/{language}.yml
+- `config/data.yml`
+- `config/layout.yml`
+- `config/style.yml`
+- `config/_private/data.yml`
+- `config/_private/layout.yml`
+- `config/_private/style.yml`
+- `_i18n/{language}.yml`
+- `_i18n/_private/{language}.yml`
 
 [jinja2-link]: https://jinja.palletsprojects.com
 [jekyll-multiple-languages-plugin-link]: https://github.com/kurtsson/jekyll-multiple-languages-plugin

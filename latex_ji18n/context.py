@@ -176,6 +176,13 @@ class ProjectContext(BaseContext):
             must_exists=True,
             not_exists_msg=("i18n directory '%s' does not exists.") % i18n_dirpath,
         )
+
+        # _i18n/
+        i18n_private_dirpath = os.path.join(
+            i18n_dirpath, self._get_meta("private_dirname")
+        )
+        self._prepare_file(i18n_private_dirpath, "i18n_private_dirpath")
+
         self._prepared = True
 
     def load(self):

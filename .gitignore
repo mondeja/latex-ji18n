@@ -1,7 +1,7 @@
 # Package custom ignores
 /__main__.py
 /docs/_build/
-/project_example
+/example_project/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
