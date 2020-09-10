@@ -1,5 +1,6 @@
 # Package custom ignores
 /__main__.py
+/__dev__.sh
 /docs/_build/
 /example_project/
 

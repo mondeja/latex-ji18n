@@ -247,7 +247,7 @@ class LanguageContext(BaseContext):
     @property
     def localized_tex_filepath(self):
         return os.path.join(
-            self.project_context.source_dirpath, self.localized_template_name
+            self.project_context.source_dirpath, self.localized_tex_filename
         )
 
     @property

@@ -1,10 +1,10 @@
 import abc
+import inspect
 import os
 import shutil
 import subprocess
 import sys
-
-from latex_ji18n.exceptions import LatexBuildError
+import time
 
 
 class LatexExecutable(object):
@@ -36,25 +36,11 @@ class LatexExecutable(object):
         """
         return bool(self.binary)
 
-    def call(self, cmd):
-        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = proc.communicate()
-        if proc.returncode != 0:
-            raise LatexBuildError(stderr)
-        return (stdout, stderr)
-
-    def live_stdout_call(self, cmd):
+    def blocking_call(self, cmd):
         proc = subprocess.Popen(
-            cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, stdin=open(os.devnull)
-        )
-        line = ""
-        for out in iter(lambda: proc.stdout.read(1), b""):
-            ch = out.decode("latin1")
-            line += ch
-            if ch == "\n":
-                yield line.strip("\n")
-                line = ""
-        proc.communicate()
+            cmd, stderr=sys.stderr, stdout=sys.stdout, stdin=open(os.devnull))
+        while proc.poll() is None:
+            time.sleep(.001)
         return proc.returncode
 
 
@@ -62,7 +48,19 @@ class PdfLatexExecutable(LatexExecutable):
     name = "pdflatex"
     output_extension = ".pdf"
 
-    def run(self, filepath, n_runs=2):
-        for i in range(n_runs):
-            for line in self.live_stdout_call([self.binary, filepath]):
-                sys.stdout.write("%s\n" % line)
+    def run(self, filepath):
+        return self.blocking_call([self.binary, filepath])
+
+
+class BiberExecutable(LatexExecutable):
+    name = "biber"
+
+    def run(self, filepath):
+        return self.blocking_call([self.binary, filepath])
+
+
+executables = {
+    local.name: local for local in locals().values()
+    if inspect.isclass(local) and issubclass(local, LatexExecutable)
+    and local is not LatexExecutable
+}
