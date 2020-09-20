@@ -18,7 +18,7 @@ pip install latex-ji18n
 
 ## Separation of data, style and layout
 
-This structure of directories is the workflow that imposes this utility
+Next structure of directories is the workflow that imposes this utility
  working with it:
 
 ```tree
@@ -81,6 +81,17 @@ The contexts are created updating a dictionary iterating over files in next
 - `config/_private/style.yml`
 - `_i18n/{language}.yml`
 - `_i18n/_private/{language}.yml`
+
+Context data is dumped following next rules:
+
+- All the data located in `data.yml` files is dumped at the root of the context..
+- Data located in `layout.yml` files are dumped into a `layout` variable
+ at the root of the context.
+- Data located in `style.yml` files are dumped into a `layout` variable
+ at the root of the context.
+- If `src/` directory contains `.bib` files, database entries located at this
+ files will be available ordered by entry type at `_bibdb` variable at the root
+ of the context.
 
 [jinja2-link]: https://jinja.palletsprojects.com
 [jekyll-multiple-languages-plugin-link]: https://github.com/kurtsson/jekyll-multiple-languages-plugin

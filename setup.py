@@ -20,6 +20,7 @@ REQUIRED = [
     'inflection>=0.5.1',
     'ruamel.yaml>=0.16.10',
     'click>=7.1.2',
+    'bibtexparser>=1.2.0',
 ]
 
 TEST_EXTRAS = [

@@ -19,7 +19,7 @@ def cli():
 )
 @click.option(
     "-c", "--commands",
-    default=None,
+    default='pdflatex',
     required=False,
     type=str
 )

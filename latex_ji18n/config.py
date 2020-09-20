@@ -11,6 +11,7 @@ DEFAULT_PRIVATE_DIRNAME = "_private"
 DEFAULT_SOURCE_DIRNAME = "src"
 DEFAULT_DIST_DIRNAME = "dist"
 DEFAULT_TEMPLATE_FILENAME = "template.tex"
+DEFAULT_BIBDB_VARIABLE_NAME = "_bibdb"
 
 
 class BaseConfig:
@@ -25,12 +26,14 @@ class BaseConfig:
             "layout_filename": self.layout_filename,
             "style_filename": self.style_filename,
             "template_filename": self.template_filename,
+            "bibdb_variable_name": self.bibdb_variable_name,
         }
 
     def get_forbidden_attrs(self):
         return [
             os.path.splitext(self.layout_filename)[0],
             os.path.splitext(self.style_filename)[0],
+            self.bibdb_variable_name,
         ]
 
     def localized_template_name_schema(self):
@@ -51,6 +54,7 @@ class Config(BaseConfig):
         layout_filename=DEFAULT_LAYOUT_FILENAME,
         style_filename=DEFAULT_STYLE_FILENAME,
         template_filename=DEFAULT_TEMPLATE_FILENAME,
+        bibdb_variable_name=DEFAULT_BIBDB_VARIABLE_NAME,
     ):
         self.config_dirname = config_dirname
         self.i18n_dirname = i18n_dirname
@@ -61,3 +65,4 @@ class Config(BaseConfig):
         self.layout_filename = layout_filename
         self.style_filename = style_filename
         self.template_filename = template_filename
+        self.bibdb_variable_name = bibdb_variable_name

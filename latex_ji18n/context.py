@@ -2,12 +2,13 @@ import contextlib
 import inspect
 import os
 
+from latex_ji18n.biber import get_db_entries_by_type_from_dir_bib_files
 from latex_ji18n.config import Config
 from latex_ji18n.io import read_yaml_file
 
 
 class BaseContext(dict):
-    def __init__(self, config=Config, metadata_dict="__meta", **kwargs):
+    def __init__(self, config=Config, metadata_dict="__config", **kwargs):
         super().__init__(**kwargs)
 
         self._metadata_dict = metadata_dict
@@ -180,6 +181,10 @@ class ProjectContext(BaseContext):
             i18n_dirpath, self._get_meta("private_dirname")
         )
         self._prepare_file(i18n_private_dirpath, "i18n_private_dirpath")
+
+        # Load bib databases
+        self.update({self._get_meta("bibdb_variable_name"):
+                     get_db_entries_by_type_from_dir_bib_files(source_dirpath)})
 
         self._prepared = True
 
