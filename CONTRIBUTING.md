@@ -8,3 +8,4 @@
  follow the steps.
 3. Initialize the virtualenv `python -m virtualenv venv && . venv/bin/activate`
 4. Install in edit mode with development extras: `pip install -e .[dev]`
+5. Run `pre-commit install`

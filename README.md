@@ -1,4 +1,4 @@
-# latex-ji18n (LaTeX -> Jinja2 -> internacionalization)
+# latex-ji18n (LaTeX + Jinja2 + YAML = i18n)
 
 Set of tools to render LaTeX documents in multiple languages using
  [Jinja2][jinja2-link] Python library and some conventions inspired by
@@ -10,7 +10,7 @@ So you have a LaTeX document that you want to internationalize. The first step
 
 ## Install
 
-You need a `pdflatex` binary available at the PATH. Then run:
+You need a `pdflatex` binary available at your system PATH. Then run:
 
 ```bash
 pip install latex-ji18n
@@ -26,7 +26,7 @@ Next structure of directories is the workflow that imposes this utility
  │   ├── data.yml
  │   ├── layout.yml
  │   ├── style.yml
- │   └── _private
+ │   └── _private    (optional)
  │       ├── data.yml
  │       └── layout.yml
  ├── dist
@@ -34,14 +34,15 @@ Next structure of directories is the workflow that imposes this utility
  │   ├── es.pdf
  │   └── fr.pdf
  ├── _i18n
- │   ├── _private
+ │   ├── _private    (optional)
  │   │   └── es.yml
  │   ├── en.yml
  │   ├── es.yml
  │   └── fr.yml
  └── src
      ├── template.tex
-     └── your-assets.jpg
+     ├── assets.jpg
+     └── references.bib
 ```
 
 The process is simple, you write your replacements in `src/template.tex`
@@ -84,10 +85,11 @@ The contexts are created updating a dictionary iterating over files in next
 
 Context data is dumped following next rules:
 
-- All the data located in `data.yml` files is dumped at the root of the context..
+- All the data located in `data.yml` files is dumped at the root of the
+ context.
 - Data located in `layout.yml` files are dumped into a `layout` variable
  at the root of the context.
-- Data located in `style.yml` files are dumped into a `layout` variable
+- Data located in `style.yml` files are dumped into a `style` variable
  at the root of the context.
 - If `src/` directory contains `.bib` files, database entries located at this
  files will be available ordered by entry type at `_bibdb` variable at the root

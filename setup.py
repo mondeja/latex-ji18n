@@ -23,24 +23,11 @@ REQUIRED = [
     'bibtexparser>=1.2.0',
 ]
 
-TEST_EXTRAS = [
-    'pytest>=6.0.1',
-    'pytest-cov',
-    'flake8',
-    'flake8-print',
-    'flake8-implicit-str-concat',
-    'flake8-isort',
-    'isort',
-    'tox',
+DEV_EXTRAS = [
+    'twine==3.2.0',
+    'bump2version==1.0.1',
+    'pre-commit==2.9.0'
 ]
-DOC_EXTRAS = [
-    'Sphinx>=3.2.1',
-    'sphinx-rtd-theme==0.4.3',
-    'sphinx-argparse>=0.2.5',
-]
-DEV_EXTRAS = ['twine', 'bump2version', 'pre-commit', 'black'] + \
-    TEST_EXTRAS + \
-    DOC_EXTRAS
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -120,8 +107,6 @@ setup(
     install_requires=REQUIRED,
     extras_require={
         'dev': DEV_EXTRAS,
-        'test': TEST_EXTRAS,
-        'docs': DOC_EXTRAS,
     },
     include_package_data=True,
     license='BSD License',
