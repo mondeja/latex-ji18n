@@ -1,6 +1,6 @@
 repos:
   - repo: https://gitlab.com/pycqa/flake8
-    rev: master
+    rev: 3.8.4
     hooks:
       - id: flake8
         additional_dependencies: [
@@ -8,12 +8,13 @@ repos:
           flake8-implicit-str-concat,
         ]
   - repo: https://github.com/PyCQA/isort
-    rev: master
+    rev: 5.6.3
     hooks:
       - id: isort
         args: ['--check-only', '--filter-files']
+        files: \.py$
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: master
+    rev: v0.25.0
     hooks:
       - id: markdownlint
         name: markdownlint-readme
