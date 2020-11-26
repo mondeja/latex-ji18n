@@ -26,7 +26,7 @@ REQUIRED = [
 DEV_EXTRAS = [
     'twine==3.2.0',
     'bump2version==1.0.1',
-    'pre-commit==2.9.0'
+    'pre-commit==2.9.2'
 ]
 
 HERE = os.path.abspath(os.path.dirname(__file__))
