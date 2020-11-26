@@ -15,6 +15,7 @@ URL = 'https://github.com/mondeja/%s' % PROJECT_NAME
 EMAIL = 'mondejar1994@gmail.com'
 AUTHOR = 'Álvaro Mondéjar Rubio'
 REQUIRES_PYTHON = '>=3'
+
 REQUIRED = [
     'jinja2>=2.11.2',
     'inflection>=0.5.1',
@@ -23,11 +24,17 @@ REQUIRED = [
     'bibtexparser>=1.2.0',
 ]
 
+LINT_EXTRAS = [
+    'flake8==3.8.4',
+    'flake8-print==3.1.4',
+    'flake8-implicit-str-concat==0.1.0',
+    'isort==5.6.4',
+]
 DEV_EXTRAS = [
     'twine==3.2.0',
     'bump2version==1.0.1',
     'pre-commit==2.9.0'
-]
+] + LINT_EXTRAS
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -107,6 +114,7 @@ setup(
     install_requires=REQUIRED,
     extras_require={
         'dev': DEV_EXTRAS,
+        'lint': LINT_EXTRAS,
     },
     include_package_data=True,
     license='BSD License',
