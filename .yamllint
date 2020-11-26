@@ -37,6 +37,10 @@ rules:
     forbid-explicit-octal: true
     forbid-implicit-octal: true
   quoted-strings:
+    extra-required:
+      # dependabot does not parse 04:00 as string:
+      # https://github.com/mondeja/latex-ji18n/runs/1459035577
+      - \d\d:\d\d
     quote-type: single
     required: only-when-needed
   trailing-spaces: enable
