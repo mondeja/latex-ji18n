@@ -1,17 +1,17 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: "/"
+    directory: /
     schedule:
       interval: daily
-      time: "04:00"
+      time: 04:00
   - package-ecosystem: pip
-    directory: "/"
+    directory: /
     schedule:
       interval: daily
-      time: "04:00"
+      time: 04:00
     open-pull-requests-limit: 10
-      reviewers:
-        - mondeja
-      assignees:
-        - mondeja
+    reviewers:
+      - mondeja
+    assignees:
+      - mondeja
