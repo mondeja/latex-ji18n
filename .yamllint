@@ -38,8 +38,9 @@ rules:
     forbid-implicit-octal: true
   quoted-strings:
     extra-required:
-      # dependabot does not parse 04:00 as string:
+      # Dependabot does not parse unquoted hours as strings:
       # https://github.com/mondeja/latex-ji18n/runs/1459035577
+      # https://github.community/t/dependabot-parser-treat-hours-as-integers/145596
       - \d\d:\d\d
     quote-type: single
     required: only-when-needed
@@ -49,5 +50,7 @@ rules:
       - 'true'
       - 'false'
     check-keys: true
+    # Ignore this rule for all Github files:
+    # https://github.com/adrienverge/yamllint/issues/344
     ignore: |
       .github
