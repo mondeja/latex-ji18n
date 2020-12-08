@@ -34,7 +34,7 @@ LINT_EXTRAS = [
 DEV_EXTRAS = [
     'twine==3.2.0',
     'bump2version==1.0.1',
-    'pre-commit==2.9.2',
+    'pre-commit==2.9.3',
 ]
 
 HERE = os.path.abspath(os.path.dirname(__file__))
