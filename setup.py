@@ -28,7 +28,7 @@ LINT_EXTRAS = [
     'flake8==3.8.4',
     'flake8-print==4.0.0',
     'flake8-implicit-str-concat==0.2.0',
-    'isort==5.6.4',
+    'isort==5.7.0',
     'yamllint==1.25.0',
 ]
 DEV_EXTRAS = [
