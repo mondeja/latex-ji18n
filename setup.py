@@ -29,7 +29,7 @@ LINT_EXTRAS = [
     'flake8-print==4.0.0',
     'flake8-implicit-str-concat==0.2.0',
     'isort==5.7.0',
-    'yamllint==1.25.0',
+    'yamllint==1.26.0',
 ]
 DEV_EXTRAS = [
     'twine==3.3.0',
