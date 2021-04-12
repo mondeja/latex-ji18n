@@ -21,7 +21,7 @@ repos:
         name: markdownlint-readme
         files: README.md
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.0
+    rev: v1.26.1
     hooks:
       - id: yamllint
         files: .+\.(yml|yaml)
