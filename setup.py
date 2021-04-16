@@ -25,7 +25,7 @@ REQUIRED = [
 ]
 
 LINT_EXTRAS = [
-    'flake8==3.9.0',
+    'flake8==3.9.1',
     'flake8-print==4.0.0',
     'flake8-implicit-str-concat==0.2.0',
     'isort==5.8.0',
